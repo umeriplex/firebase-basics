@@ -56,8 +56,9 @@ class _AddPostsViewState extends State<AddPostsView> {
                   setState(() {
                     loading = true;
                   });
-                  databaseReference.child(DateTime.now().millisecondsSinceEpoch.toString()).set({
-                    'id': DateTime.now().millisecondsSinceEpoch.toString(),
+                  String id = DateTime.now().millisecondsSinceEpoch.toString();
+                  databaseReference.child(id).set({
+                    'id': id,
                     'post': postController.text,
                   }).then((value) {
                     setState(() {
