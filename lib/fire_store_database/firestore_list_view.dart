@@ -61,7 +61,8 @@ class _FireStoreListViewState extends State<FireStoreListView> {
                                 PopupMenuItem(
                                   child: ListTile(
                                     onTap: (){
-
+                                      Navigator.pop(context);
+                                      _addPost(snapshot.data!.docs[index]['post'].toString(), snapshot.data!.docs[index]['id'].toString());
                                     },
                                     leading: const Icon(Icons.edit,color:Colors.deepPurple),
                                     title: const Text('Edit'),
@@ -98,7 +99,6 @@ class _FireStoreListViewState extends State<FireStoreListView> {
               }
             },
           ),
-
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -119,6 +119,7 @@ class _FireStoreListViewState extends State<FireStoreListView> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
+                maxLines: 3,
                 controller: _post,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -130,7 +131,16 @@ class _FireStoreListViewState extends State<FireStoreListView> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                CollectionReference _cRef = FirebaseFirestore.instance.collection('posts');
+                _cRef.doc(id).update({
+                  'post' : _post.text.toString(),
+                }).then((value) {
+                  Navigator.pop(context);
+                  ToastMessage.show('Updated Successfully!');
+                }).onError((error, stackTrace) {
+                  Navigator.pop(context);
+                  ToastMessage.show('Some Error!');
+                });
               },
               child: const Text('Update'),
             ),

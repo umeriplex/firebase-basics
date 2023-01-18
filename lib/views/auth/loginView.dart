@@ -1,11 +1,14 @@
 import 'dart:async';
 
+import 'package:firebase_abcd/fire_store_database/firestore_list_view.dart';
 import 'package:firebase_abcd/utils/toasts_messages.dart';
 import 'package:firebase_abcd/views/auth/signup_view.dart';
 import 'package:firebase_abcd/views/post_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../forgot_password/forgot_password_view.dart';
+import '../../upload_image/upload_image_view.dart';
 import '../../widgets/rounded_button.dart';
 import 'login_with_phone_number.dart';
 
@@ -126,7 +129,7 @@ class _LoginViewState extends State<LoginView> {
                 alignment: Alignment.bottomRight,
                 child: TextButton(
                     onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword()));
                     },
                     child: const Text('Forgot Password?')),
               ),

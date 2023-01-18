@@ -46,6 +46,7 @@ dependencies:
   flutter_animator: ^3.2.2
   firebase_database: ^10.0.9
   timeago: ^3.3.0
+  image_picker: ^0.8.6
 
 
 dev_dependencies:

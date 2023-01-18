@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../fire_store_database/firestore_list_view.dart';
+import '../upload_image/upload_image_view.dart';
 import '../views/auth/loginView.dart';
 
 class SplashServices{
@@ -14,7 +15,7 @@ class SplashServices{
     final user = _auth.currentUser;
     if(user != null) {
       Timer(const Duration(seconds: 3), () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const FireStoreListView()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const PostView()));
       });
     }else{
       Timer(const Duration(seconds: 3), () {
