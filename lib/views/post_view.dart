@@ -20,6 +20,7 @@ class PostView extends StatefulWidget {
 }
 
 class _PostViewState extends State<PostView> {
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final _database = FirebaseDatabase.instance.ref('post');
   final searchFilter = TextEditingController();
